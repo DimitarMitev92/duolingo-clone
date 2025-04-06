@@ -28,6 +28,7 @@
     "react": "^18",
     "react-circular-progressbar": "^2.2.0",
     "react-dom": "^18",
+    "react-use": "^17.6.0",
     "shadcn": "^2.4.0-canary.17",
     "shadcn-ui": "^0.9.5",
     "sonner": "^2.0.1",
