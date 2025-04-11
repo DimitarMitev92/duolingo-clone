@@ -8,9 +8,10 @@ import { Challenge } from "./challenge";
 import { Footer } from "./footer";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
-import { start } from "repl";
 import { reduceHearts } from "@/actions/user-progress";
 import { useAudio } from "react-use";
+import Image from "next/image";
+import { ResultCard } from "./result-card";
 
 type Props = {
   initialLessonId: number;
@@ -126,6 +127,39 @@ export const Quiz = ({
       });
     }
   };
+
+  // TODO: Remove true
+  if (true || !challenge) {
+    return (
+      <>
+        <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
+          <Image
+            src="/finish.svg"
+            alt="finish"
+            width={100}
+            height={100}
+            className="hidden lg:block"
+          />
+          <Image
+            src="/finish.svg"
+            alt="finish"
+            width={50}
+            height={50}
+            className="block lg:hidden"
+          />
+          <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
+            Great job!
+            <br />
+            You&apos;ve completed the lesson.
+          </h1>
+          <div className="flex items-center gap-x-4 w-full">
+            <ResultCard variant="points" value={challenges.length * 10} />
+            <ResultCard variant="hearts" value={hearts} />
+          </div>
+        </div>
+      </>
+    );
+  }
 
   const title =
     challenge.type === "ASSIST"
