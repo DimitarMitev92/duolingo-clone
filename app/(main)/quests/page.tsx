@@ -1,4 +1,5 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
+import { Promo } from "@/components/promo.";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
@@ -37,6 +38,7 @@ const QuestsPage = async () => {
           points={userProgress.points}
           hasActiveSubscription={isPro}
         />
+        {!isPro && <Promo />}
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
