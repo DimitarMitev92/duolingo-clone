@@ -6,13 +6,12 @@ import {
   TextInput,
 } from "react-admin";
 
-export const UnitCreate = () => {
+export const LessonCreate = () => {
   return (
     <Create>
       <SimpleForm>
         <TextInput source="title" label="Title" />
-        <TextInput source="description" label="Description" />
-        <ReferenceInput source="courseId" reference="courses" />
+        <ReferenceInput source="unitId" reference="units" />
         <NumberInput source="order" label="Order" />
       </SimpleForm>
     </Create>

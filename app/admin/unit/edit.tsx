@@ -1,12 +1,20 @@
-import { Edit, SimpleForm, TextInput } from "react-admin";
+import {
+  Edit,
+  NumberInput,
+  ReferenceInput,
+  SimpleForm,
+  TextInput,
+} from "react-admin";
 
 export const UnitEdit = () => {
   return (
     <Edit>
       <SimpleForm>
-        <TextInput source="id" label="Id" required />
-        <TextInput source="title" label="Title" required />
-        <TextInput source="imageSrc" label="Image" required />
+        <NumberInput source="id" label="Id" />
+        <TextInput source="title" label="Title" />
+        <TextInput source="description" label="Description" />
+        <ReferenceInput source="courseId" reference="courses" />
+        <NumberInput source="order" label="Order" />
       </SimpleForm>
     </Edit>
   );
