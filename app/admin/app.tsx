@@ -57,6 +57,7 @@ const App = () => {
         list={ChallengeOptionList}
         create={ChallengeOptionCreate}
         edit={ChallengeOptionEdit}
+        options={{ parent: "challenges" }}
       />
     </Admin>
   );
