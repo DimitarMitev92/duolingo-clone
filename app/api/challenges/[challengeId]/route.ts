@@ -1,17 +1,17 @@
 import db from "@/db/drizzle";
-import { lessons } from "@/db/schema";
+import { challenges } from "@/db/schema";
 import { isAdmin } from "@/lib/admin";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export const GET = async (
   req: Request,
-  { params }: { params: { lessonId: number } }
+  { params }: { params: { challengeId: number } }
 ) => {
   if (!isAdmin()) return new NextResponse("Unauthorized", { status: 401 });
 
   const data = await db.query.units.findFirst({
-    where: eq(lessons.id, params.lessonId),
+    where: eq(challenges.id, params.challengeId),
   });
 
   return NextResponse.json(data);
@@ -19,16 +19,16 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { lessonId: number } }
+  { params }: { params: { challengeId: number } }
 ) => {
   if (!isAdmin()) return new NextResponse("Unauthorized", { status: 401 });
 
   const body = await req.json();
 
   const data = await db
-    .update(lessons)
+    .update(challenges)
     .set({ ...body })
-    .where(eq(lessons.id, params.lessonId))
+    .where(eq(challenges.id, params.challengeId))
     .returning();
 
   return NextResponse.json(data[0]);
@@ -36,13 +36,13 @@ export const PUT = async (
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { lessonId: number } }
+  { params }: { params: { challengeId: number } }
 ) => {
   if (!isAdmin()) return new NextResponse("Unauthorized", { status: 401 });
 
   const data = await db
-    .delete(lessons)
-    .where(eq(lessons.id, params.lessonId))
+    .delete(challenges)
+    .where(eq(challenges.id, params.challengeId))
     .returning();
 
   return NextResponse.json(data[0]);
