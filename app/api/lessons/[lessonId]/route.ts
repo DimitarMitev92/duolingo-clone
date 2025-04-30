@@ -10,7 +10,7 @@ export const GET = async (
 ) => {
   if (!isAdmin()) return new NextResponse("Unauthorized", { status: 401 });
 
-  const data = await db.query.units.findFirst({
+  const data = await db.query.lessons.findFirst({
     where: eq(lessons.id, params.lessonId),
   });
 
